@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: monitor
+  labels:
+    name: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: prometheus
+  # 设置滚动更新策略
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      # 添加注释，configmap更新后，修改版本
+      annotations:
+        configmap: v0.1
+      labels:
+        name: prometheus
+    spec:
+      # 为pod添加角色授权
+      serviceAccountName: prometheus
+      serviceAccount: prometheus
+      # 初始化容器。修改prometheus的数据目录权限
+      initContainers:
+      - name: chown-data
+        image: busybox
+        command: [chown, -R, "nobody:nobody", /prometheus]
+        volumeMounts:
+        - name: prometheus-data
+          mountPath: /prometheus
+      
+      # 固定调度pods
+      nodeName: k8s-node1
+      
+      # 为容器添加hosts解析
+      hostAliases:
+      - ip: 192.168.160.10
+        hostnames:
+        - "k8s-master"
+      - ip: 192.168.160.11
+        hostnames:
+        - "k8s-node1"
+      - ip: 192.168.160.12
+        hostnames:
+        - "k8s-node2"
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.30.3
+        imagePullPolicy: IfNotPresent
+        
+        # 修改容器启动命令
+        command: ["/bin/prometheus"]
+        args: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention=24h", "--web.enable-lifecycle", "--web.enable-admin-api"]
+        
+        # 容器资源限制
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 100m
+          requests:
+            memory: 512Mi
+            cpu: 100m
+        
+        # 容器存活健康检测
+        livenessProbe:
+          httpGet:
+            port: 9090
+            path: /metrics
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          failureThreshold: 3
+        
+        # 容器就绪健康检测
+        readinessProbe:
+          httpGet:
+            port: 9090
+            path: /metrics
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+        
+        # 容器路径挂载
+        volumeMounts:
+        - mountPath: /prometheus
+          name: prometheus-data
+        - name: config
+          mountPath: /etc/prometheus/prometheus.yml
+          readOnly: true
+          subPath: prometheus.yml
+        
+        # 设置容器端口
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+          name: http
+      # 设置挂载点，第一个为宿主机文件挂载。第二个为configmap资源对象挂载
+      volumes:
+      - name: prometheus-data
+        hostPath:
+          path: /usr/local/prometheus/data
+      - name: config
+        configMap:
+          name: prometheus-configmap
