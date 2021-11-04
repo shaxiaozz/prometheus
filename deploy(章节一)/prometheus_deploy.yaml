@@ -20,7 +20,7 @@ spec:
     metadata:
       # 添加注释，configmap更新后，修改版本
       annotations:
-        configmap: v0.1
+        configmap: v3.2
       labels:
         name: prometheus
     spec:
@@ -35,10 +35,7 @@ spec:
         volumeMounts:
         - name: prometheus-data
           mountPath: /prometheus
-      
-      # 固定调度pods
-      nodeName: k8s-node1
-      
+
       # 为容器添加hosts解析
       hostAliases:
       - ip: 192.168.160.10
@@ -50,24 +47,28 @@ spec:
       - ip: 192.168.160.12
         hostnames:
         - "k8s-node2"
+
+      # 固定调度pods
+      nodeName: k8s-node1
+
       containers:
       - name: prometheus
         image: prom/prometheus:v2.30.3
         imagePullPolicy: IfNotPresent
-        
+
         # 修改容器启动命令
         command: ["/bin/prometheus"]
-        args: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention=24h", "--web.enable-lifecycle", "--web.enable-admin-api"]
-        
+        args: ["--config.file=/config/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention=168h", "--web.enable-lifecycle", "--web.enable-admin-api"]
+
         # 容器资源限制
         resources:
           limits:
-            memory: 512Mi
-            cpu: 100m
+            memory: 2500Mi
+            cpu: 800m
           requests:
             memory: 512Mi
-            cpu: 100m
-        
+            cpu: 200m
+
         # 容器存活健康检测
         livenessProbe:
           httpGet:
@@ -76,7 +77,7 @@ spec:
           initialDelaySeconds: 15
           periodSeconds: 5
           failureThreshold: 3
-        
+
         # 容器就绪健康检测
         readinessProbe:
           httpGet:
@@ -85,22 +86,24 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
           failureThreshold: 3
-        
+
         # 容器路径挂载
         volumeMounts:
         - mountPath: /prometheus
           name: prometheus-data
         - name: config
-          mountPath: /etc/prometheus/prometheus.yml
+          mountPath: /config
           readOnly: true
-          subPath: prometheus.yml
-        
+        - name: alert-rule-config
+          mountPath: /config/rules
+          readOnly: true
+
         # 设置容器端口
         ports:
         - containerPort: 9090
           protocol: TCP
           name: http
-      # 设置挂载点，第一个为宿主机文件挂载。第二个为configmap资源对象挂载
+      # 设置configmap资源对象挂载点
       volumes:
       - name: prometheus-data
         hostPath:
