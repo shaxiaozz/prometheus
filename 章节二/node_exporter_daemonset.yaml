@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+  namespace: monitor
+  labels:
+    name: node-exporter
+spec:
+  selector:
+    matchLabels:
+      name: node-exporter
+  template:
+    metadata:
+      labels:
+        name: node-exporter
+    spec:
+    #pod安全策略，使用宿主机的进程命名空间，进程间通信命名空间，网络命名空间
+      hostPID: true
+      hostIPC: true
+      hostNetwork: true
+
+      containers:
+      - name: node-exporter
+        image: prom/node-exporter:v1.2.2
+        ports:
+        - containerPort: 9100
+        resources:
+          requests:
+            cpu: 150m
+            memory: "128Mi"
+          limits:
+            cpu: 350m
+            memory: "512Mi"
+        securityContext:
+          privileged: true
+        args:
+        - --path.procfs
+        - /host/proc
+        - --path.sysfs
+        - /host/sys
+        - --path.rootfs
+        - /host
+        - --collector.filesystem.ignored-mount-points
+        - '"^/(sys|proc|dev|host|etc)($|/)"'
+
+    #容器挂载点
+        volumeMounts:
+        - name: dev
+          mountPath: /host/dev
+          readOnly: true
+        - name: proc
+          mountPath: /host/proc
+          readOnly: true
+        - name: sys
+          mountPath: /host/sys
+          readOnly: true
+        - name: rootfs
+          mountPath: /host
+          readOnly: true
+
+    #容器存活健康检测
+        livenessProbe:
+          httpGet:
+            port: 9100
+            path: /metrics
+          initialDelaySeconds: 5
+          failureThreshold: 3
+
+    #容器就绪健康检测
+        readinessProbe:
+          httpGet:
+            port: 9100
+            path: /metrics
+          initialDelaySeconds: 5
+          failureThreshold: 3
+
+    #监控master节点（Master存在NoSchedule的污点，需要匹配）
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Exists"
+        effect: "NoSchedule"
+
+    #宿主机挂载点路径
+      volumes:
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: dev
+          hostPath:
+            path: /dev
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: rootfs
+          hostPath:
+            path: /
