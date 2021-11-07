@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: monitor
+  labels:
+    name: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: prometheus
+  # 设置滚动更新策略
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: prometheus
+    spec:
+      # 为pod添加角色授权
+      serviceAccountName: prometheus
+      serviceAccount: prometheus
+
+      # 容器配置
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.30.3
+        imagePullPolicy: IfNotPresent
+
+        # 修改容器启动命令
+        command: ["/bin/prometheus"]
+        args: ["--config.file=/config/prometheus.yml", "--storage.tsdb.path=/prometheus", "--storage.tsdb.retention=168h", "--web.enable-lifecycle", "--web.enable-admin-api"]
+
+        # 容器资源限制
+        resources:
+          limits:
+            memory: 1200Mi
+            cpu: 400m
+          requests:
+            memory: 512Mi
+            cpu: 200m
+
+        # 容器存活健康检测
+        livenessProbe:
+          httpGet:
+            port: 9090
+            path: /metrics
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          failureThreshold: 3
+
+        # 容器就绪健康检测
+        readinessProbe:
+          httpGet:
+            port: 9090
+            path: /metrics
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+
+        # 容器路径挂载
+        volumeMounts:
+        - mountPath: /prometheus
+          name: prometheus-data
+        - name: config
+          mountPath: /config
+          readOnly: true
+
+        # 设置容器端口
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+          name: http
+
+      # 设置configmap资源对象挂载点及pvc挂载点
+      volumes:
+      - name: prometheus-data
+        persistentVolumeClaim:
+          claimName: promehteus-data
+      - name: config
+        configMap:
+          name: prometheus-configmap

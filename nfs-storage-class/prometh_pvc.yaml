@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: promehteus-data
+  namespace: monitor
+  labels:
+    name: prometheus
+spec:
+  # 挂载模式为读写模式
+  accessModes:
+    - ReadWriteMany
+  # storageclass资源对象名称
+  storageClassName: nfs-storage
+  resources:
+    requests:
+      storage: "10Gi"
