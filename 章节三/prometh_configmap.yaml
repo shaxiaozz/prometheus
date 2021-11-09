@@ -22,6 +22,8 @@ data:
       - job_name: 'prometheus'
         static_configs:
         - targets: ['127.0.0.1:9090']
+      
+      # 监控K8s工作节点(服务发现机制监控)
       - job_name: 'service-k8s-nodes'
         kubernetes_sd_configs:
         - role: node
@@ -31,3 +33,4 @@ data:
           replacement: '${1}:9100'
           target_label: __address__
           action: replace
+
