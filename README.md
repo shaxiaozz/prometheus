@@ -21,3 +21,7 @@
   **文章名称:** K8s部署kube-state-metrics 并使用Prometheus监控  
   **文章链接:** https://blog.csdn.net/weixin_42708432/article/details/121238989
   
+### 六、章节六
+  **文章名称:** Prometheus 监控Kafka  
+  **文章链接:** https://blog.csdn.net/weixin_42708432/article/details/121239258
+  
