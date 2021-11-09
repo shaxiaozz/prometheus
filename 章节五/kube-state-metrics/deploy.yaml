@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: kube-state-metrics
+    app.kubernetes.io/version: 2.2.3
+  name: kube-state-metrics
+  namespace: monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kube-state-metrics
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kube-state-metrics
+        app.kubernetes.io/version: 2.2.3
+    spec:
+      containers:
+      - image: registry.cn-guangzhou.aliyuncs.com/shaxiaozz/kube-state-metrics:v2.2.3
+      
+        # 容器资源限制
+        resources:
+          limits:
+            memory: 300Mi
+            cpu: 200m
+          requests:
+            memory: 150Mi
+            cpu: 100m
+        
+        # 健康检查
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 15
+          timeoutSeconds: 5
+        name: kube-state-metrics
+        ports:
+        - containerPort: 8080
+          name: http-metrics
+        - containerPort: 8081
+          name: telemetry
+        
+        # 就绪检查
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8081
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+        
+        # 容器安全上下文
+        securityContext:
+          runAsUser: 65534
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: kube-state-metrics
