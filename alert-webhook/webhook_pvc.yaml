@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: webhook-data
+  namespace: monitor
+  labels:
+    name: prometheus-alert-center
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs-storage
+  resources:
+    requests:
+      storage: "10Gi"

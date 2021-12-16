@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: prometheus-alert-center
+  name: prometheus-alert-center
+  namespace: monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: prometheus-alert-center
+  template:
+    metadata:
+      labels:
+        name: prometheus-alert-center
+    spec:
+      containers:
+      - image: feiyu563/prometheus-alert:v-4.6.1
+        imagePullPolicy: IfNotPresent
+        name: prometheus-alert-center
+        env:
+        - name: TZ
+          value: "Asia/Shanghai"
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          limits:
+            cpu: 50m
+            memory: 200Mi
+        volumeMounts:
+        - name: prometheus-alert-center-conf-map
+          mountPath: /app/conf/app.conf
+          subPath: app.conf
+        - name: prometheus-alert-center-conf-map
+          mountPath: /app/user.csv
+          subPath: user.csv
+        - name: webhook-data
+          mountPath: /app/db/
+      volumes:
+      - name: prometheus-alert-center-conf-map
+        configMap:
+          name: prometheus-alert-center-conf
+          items:
+          - key: app.conf
+            path: app.conf
+          - key: user.csv
+            path: user.csv
+      - name: webhook-data
+        persistentVolumeClaim:
+          claimName: webhook-data
