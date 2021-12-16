@@ -1,0 +1,1865 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 22,
+  "iteration": 1639627012305,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "切换其他仪表板",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "center",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "节点名称"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 212
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "节点状态"
+                },
+                "properties": [
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-background"
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 101
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-green",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "内存总量"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "bytes"
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 119
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-background"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-blue",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Pod数量"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 91
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-text"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-green",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "CPU总核数"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 88
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-background"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-blue",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "CPU已分配(百分比)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 152
+                  },
+                  {
+                    "id": "unit",
+                    "value": "percent"
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "gradient-gauge"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "dark-green",
+                          "value": null
+                        },
+                        {
+                          "color": "red",
+                          "value": 80
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "max",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "CPU已分配(核数)"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 132
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 2
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-text"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-green",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "内存已分配"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "bytes"
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 142
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-text"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-green",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "内存已分配(百分比)"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "percent"
+                  },
+                  {
+                    "id": "decimals",
+                    "value": 2
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "gradient-gauge"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "dark-green",
+                          "value": null
+                        },
+                        {
+                          "color": "red",
+                          "value": 80
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "max",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Pod上限数量"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 108
+                  },
+                  {
+                    "id": "custom.displayMode",
+                    "value": "color-background"
+                  },
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "semi-dark-blue",
+                          "value": null
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "节点角色"
+                },
+                "properties": [
+                  {
+                    "id": "noValue",
+                    "value": "node"
+                  },
+                  {
+                    "id": "custom.width",
+                    "value": 114
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 2,
+          "options": {
+            "frameIndex": 0,
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "节点角色"
+              }
+            ]
+          },
+          "pluginVersion": "8.2.1",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "kube_node_status_condition{job=\"$job\",status=\"true\",node=~\"$node\"} == 1",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "节点状态",
+              "refId": "节点状态"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(kube_pod_info{job=\"$job\",created_by_kind!~\"<none>|Job\",node=~\"^$node$\"}) by (node)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "Pod数量",
+              "refId": "Pod数量"
+            },
+            {
+              "exemplar": true,
+              "expr": "kube_node_status_allocatable{job=\"$job\",node=~\"^$node$\",resource=\"cpu\",unit=\"core\"} - 0",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "CPU总核数",
+              "refId": "CPU总核数"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(kube_pod_container_resource_requests{job=\"$job\",resource=\"cpu\", unit=\"core\",node=~\"^$node$\"}) by (node) / sum(kube_node_status_allocatable{job=\"$job\",resource=\"cpu\", unit=\"core\", node=~\"^$node$\"}) by (node) * 100",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "CPU分配率",
+              "refId": "CPU分配率"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(kube_pod_container_resource_requests{job=\"$job\",resource=\"cpu\", unit=\"core\",node=~\"^$node$\"}) by (node) ",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "CPU已分配",
+              "refId": "CPU已分配"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum (kube_node_status_allocatable{job=\"$job\",node=~\"^$node$\",resource=\"memory\",unit=\"byte\"}) by (node)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "内存总量",
+              "refId": "内存总量"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(kube_pod_container_resource_requests{job=\"$job\",resource=\"memory\", unit=\"byte\",node=~\"^$node$\"}) by (node) ",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "内存已分配",
+              "refId": "内存已分配"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(kube_pod_container_resource_requests{job=\"$job\",resource=\"memory\", unit=\"byte\",node=~\"^$node$\"}) by (node) / sum(kube_node_status_allocatable{job=\"$job\",resource=\"memory\", unit=\"byte\", node=~\"^$node$\"}) by (node) * 100",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "内存已分配(百分比)",
+              "refId": "内存已分配(百分比)"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(kube_node_status_allocatable{job=\"$job\",resource=\"pods\", unit=\"integer\",node=~\"^$node$\"})by (node)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "Pod上限",
+              "refId": "Pod上限"
+            },
+            {
+              "exemplar": true,
+              "expr": "kube_node_role{job=\"$job\",role!=\"control-plane\"} - 0",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "role",
+              "refId": "role"
+            }
+          ],
+          "title": "[$node] 工作节点信息明细（关联节点）",
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {}
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true,
+                  "Value": true,
+                  "Value #A": false,
+                  "Value #role": true,
+                  "Value #节点状态": true,
+                  "__name__": true,
+                  "instance": true,
+                  "job": true,
+                  "resource": true,
+                  "status": true,
+                  "unit": true
+                },
+                "indexByName": {
+                  "Time": 11,
+                  "Value #CPU分配率": 7,
+                  "Value #CPU已分配": 6,
+                  "Value #CPU总核数": 5,
+                  "Value #Pod上限": 4,
+                  "Value #Pod数量": 3,
+                  "Value #role": 19,
+                  "Value #内存已分配": 9,
+                  "Value #内存已分配(百分比)": 10,
+                  "Value #内存总量": 8,
+                  "Value #节点状态": 16,
+                  "__name__": 12,
+                  "condition": 1,
+                  "instance": 13,
+                  "job": 14,
+                  "node": 0,
+                  "resource": 17,
+                  "role": 2,
+                  "status": 15,
+                  "unit": 18
+                },
+                "renameByName": {
+                  "Time": "",
+                  "Value #A": "CPU核数分配率",
+                  "Value #B": "Pod数量",
+                  "Value #CPU分配率": "CPU已分配(百分比)",
+                  "Value #CPU已分配": "CPU已分配(核数)",
+                  "Value #CPU总核数": "CPU总核数",
+                  "Value #Pod上限": "Pod上限数量",
+                  "Value #Pod数量": "Pod数量",
+                  "Value #内存已分配": "内存已分配",
+                  "Value #内存已分配(百分比)": "内存已分配(百分比)",
+                  "Value #内存总量": "内存总量",
+                  "condition": "节点状态",
+                  "node": "节点名称",
+                  "role": "节点角色",
+                  "unit": "",
+                  "状态": ""
+                }
+              }
+            },
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "include": {
+                  "names": [
+                    "节点名称",
+                    "节点状态",
+                    "Pod数量",
+                    "Pod上限数量",
+                    "CPU总核数",
+                    "CPU已分配(核数)",
+                    "CPU已分配(百分比)",
+                    "内存总量",
+                    "内存已分配",
+                    "内存已分配(百分比)",
+                    "节点角色"
+                  ]
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "center",
+                "displayMode": "auto",
+                "filterable": false
+              },
+              "mappings": [],
+              "noValue": "0",
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "命名空间名称"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 141
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "微服务数量"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 112
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Pod数量"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 103
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "SVC数量"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 108
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "ConfgiMap数量"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 126
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 10
+          },
+          "id": 4,
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "命名空间名称"
+              }
+            ]
+          },
+          "pluginVersion": "8.2.1",
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "count(kube_pod_info{job=~\"$job\",node=~\"^$node$\"}) by (namespace)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "Pod数量",
+              "refId": "Pod数量"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(kube_service_info{job=~\"$job\"}) by(namespace)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "SVC数量",
+              "refId": "SVC数量"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(count(kube_pod_container_info{job=~\"$job\"}) by(container,namespace))by(namespace)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "微服务数量",
+              "refId": "微服务数量"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(kube_configmap_info{job=~\"$job\"}) by(namespace)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "ConfgiMap数量",
+              "refId": "ConfgiMap数量"
+            },
+            {
+              "exemplar": true,
+              "expr": "count(kube_secret_info{job=~\"$job\"}) by(namespace)",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "interval": "",
+              "legendFormat": "Secret数量",
+              "refId": "Secret数量"
+            }
+          ],
+          "title": "[$job] 集群命名空间明细（关联K8s集群）",
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {}
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time": true,
+                  "Value": false,
+                  "Value #命名空间名称": true,
+                  "__name__": true,
+                  "instance": true,
+                  "job": true,
+                  "{namespace=\"default\"}": false
+                },
+                "indexByName": {
+                  "Time": 6,
+                  "Value #ConfgiMap数量": 4,
+                  "Value #Pod数量": 2,
+                  "Value #SVC数量": 3,
+                  "Value #Secret数量": 5,
+                  "Value #微服务数量": 1,
+                  "namespace": 0
+                },
+                "renameByName": {
+                  "Time": "",
+                  "Value": "Pod数量",
+                  "Value #ConfgiMap数量": "ConfgiMap数量",
+                  "Value #Pod数量": "Pod数量",
+                  "Value #SVC数量": "SVC数量",
+                  "Value #Secret数量": "Secret数量",
+                  "Value #命名空间名称": "",
+                  "Value #微服务数量": "微服务数量",
+                  "namespace": "命名空间名称"
+                }
+              }
+            },
+            {
+              "id": "filterFieldsByName",
+              "options": {
+                "include": {
+                  "names": []
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "Bps"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 10
+          },
+          "id": 10,
+          "options": {
+            "legend": {
+              "calcs": [
+                "max",
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum (rate(container_network_receive_bytes_total{job=~\"$job.*\",namespace=~\"$namespace\"}[$time]))*8",
+              "interval": "",
+              "legendFormat": "接收的流量",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum (rate(container_network_transmit_bytes_total{job=~\"$job.*\",namespace=~\"$namespace\"}[$time]))*8",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "发送的流量",
+              "refId": "B"
+            }
+          ],
+          "title": "$namespace命名空间：网络总览（关联命名空间）",
+          "type": "timeseries"
+        }
+      ],
+      "title": "节点资源总览：所选节点[$node]",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 12,
+      "panels": [],
+      "title": "微服务资源总览：所选命名空间[$namespace]",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "就绪状态"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 85
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 1,
+                        "text": "Not Ready"
+                      },
+                      "1": {
+                        "index": 0,
+                        "text": "Ready"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red",
+                      "value": null
+                    },
+                    {
+                      "color": "semi-dark-green",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Pod名称"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 239
+              },
+              {
+                "id": "custom.filterable",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "状态"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-red",
+                      "value": null
+                    },
+                    {
+                      "color": "semi-dark-green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "index": 1,
+                        "text": "Down"
+                      },
+                      "1": {
+                        "index": 0,
+                        "text": "Running"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 76
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "age"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "重启次数"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 75
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "运行于节点之上"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 196
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "IP"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 122
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "内存已使用"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "semi-dark-green",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              },
+              {
+                "id": "custom.width",
+                "value": 103
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU已使用(m)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 112
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "semi-dark-green",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU最大资源限制"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 131
+              },
+              {
+                "id": "noValue",
+                "value": "未配置"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "semi-dark-blue",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU最大资源限制 "
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 133
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "内存最大资源限制"
+            },
+            "properties": [
+              {
+                "id": "noValue",
+                "value": "未配置"
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "semi-dark-blue",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "custom.width",
+                "value": 130
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "内存使用率"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "gradient-gauge"
+              },
+              {
+                "id": "max",
+                "value": 100
+              },
+              {
+                "id": "noValue",
+                "value": "未配置资源限制"
+              },
+              {
+                "id": "custom.width",
+                "value": 117
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "接收的流量"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 104
+              },
+              {
+                "id": "unit",
+                "value": "Bps"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "light-orange",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "发送的流量"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "light-orange",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "unit",
+                "value": "Bps"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 18,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "就绪状态"
+          }
+        ]
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "count(kube_pod_container_info{job=\"$job\",namespace=\"$namespace\",pod=~\"$container.*\"}) by (pod)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Pod名称",
+          "refId": "Pod名称"
+        },
+        {
+          "exemplar": true,
+          "expr": "kube_pod_container_status_ready{job=\"$job\",namespace=\"$namespace\",pod=~\"$container.*\"} - 0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "READY",
+          "refId": "READY"
+        },
+        {
+          "exemplar": true,
+          "expr": "kube_pod_container_status_running{job=\"$job\",namespace=\"$namespace\",pod=~\"$container.*\"} - 0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "running",
+          "refId": "running"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_status_restarts_total{job=\"$job\",namespace=\"$namespace\",pod=~\"$container.*\"}) by (pod) - 0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "restart",
+          "refId": "restart"
+        },
+        {
+          "exemplar": true,
+          "expr": "kube_pod_info{job=\"$job\",namespace=\"$namespace\",pod=~\"$container.*\"} - 0",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "pod_ip",
+          "refId": "pod_ip"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_cpu_usage_seconds_total{job=~\"$job-.*\",namespace=\"$namespace\",container!=\"\",pod=~\"$container.*\"}[$time])) by (pod) * 1000",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "CPU已使用(m)",
+          "refId": "CPU已使用(m)"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(container_memory_working_set_bytes{job=~\"$job-.*\",namespace=\"$namespace\",container!=\"POD\",pod=~\"$container.*\"}) by (pod) / 2",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Memory (bytes)",
+          "refId": "Memory (bytes)"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_limits{job=\"$job\",namespace=\"$namespace\",resource=\"cpu\",pod=~\"$container.*\"}) by (pod) * 1000",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "CPU最大资源限制",
+          "refId": "CPU最大资源限制"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(kube_pod_container_resource_limits{job=\"$job\",namespace=\"$namespace\",resource=\"memory\",pod=~\"$container.*\"}) by (pod)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "内存最大资源限制",
+          "refId": "内存最大资源限制"
+        },
+        {
+          "exemplar": true,
+          "expr": "(sum(container_memory_working_set_bytes{job=~\"$job-.*\",namespace=\"$namespace\",container!=\"POD\",pod=~\"$container.*\"}) by (pod) / 2) / sum(kube_pod_container_resource_limits{job=\"$job\",namespace=\"$namespace\",resource=\"memory\",pod=~\"$container.*\"}) by (pod) * 100",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "内存使用率",
+          "refId": "内存使用率"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_network_receive_bytes_total{job=~\"$job-.*\",namespace=\"$namespace\",pod=~\"$container.*\"}[$time])) by (pod) * 8",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "接收的流量",
+          "refId": "接收的流量"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_network_transmit_bytes_total{job=~\"$job-.*\",namespace=\"$namespace\",pod=~\"$container.*\"}[$time])) by (pod) * 8",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "发送的流量",
+          "refId": "发送的流量"
+        }
+      ],
+      "title": "[$container] 微服务资源明细",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "Value #Pod名称": true,
+              "Value #pod_ip": true,
+              "__name__": true,
+              "container": true,
+              "created_by_kind": true,
+              "created_by_name": true,
+              "host_ip": true,
+              "host_network": true,
+              "instance": true,
+              "job": true,
+              "namespace": true,
+              "node": false,
+              "pod_ip": false,
+              "uid": true
+            },
+            "indexByName": {
+              "Time": 14,
+              "Value #CPU已使用(m)": 6,
+              "Value #CPU最大资源限制": 5,
+              "Value #Memory (bytes)": 8,
+              "Value #Pod名称": 15,
+              "Value #READY": 1,
+              "Value #pod_ip": 13,
+              "Value #restart": 3,
+              "Value #running": 2,
+              "Value #内存使用率": 9,
+              "Value #内存最大资源限制": 7,
+              "Value #发送的流量": 11,
+              "Value #接收的流量": 10,
+              "container": 16,
+              "created_by_kind": 21,
+              "created_by_name": 22,
+              "host_ip": 23,
+              "host_network": 24,
+              "instance": 17,
+              "job": 18,
+              "namespace": 19,
+              "node": 12,
+              "pod": 0,
+              "pod_ip": 4,
+              "uid": 20
+            },
+            "renameByName": {
+              "Time": "",
+              "Value": "",
+              "Value #CPU (cores)": "CPU (cores)",
+              "Value #CPU已使用(m)": "CPU已使用(m)",
+              "Value #CPU最大使用 (m)": "CPU最大资源限制 ",
+              "Value #CPU最大资源限制": "CPU最大资源限制",
+              "Value #Memory (bytes)": "内存已使用",
+              "Value #Pod名称": "",
+              "Value #READY": "就绪状态",
+              "Value #age": "age",
+              "Value #pod_ip": "",
+              "Value #restart": "重启次数",
+              "Value #running": "状态",
+              "Value #内存使用率": "内存使用率",
+              "Value #内存最大资源限制": "内存最大资源限制",
+              "Value #发送的流量": "发送的流量",
+              "Value #接收的流量": "接收的流量",
+              "host_network": "",
+              "node": "运行于节点之上",
+              "pod": "Pod名称",
+              "pod_ip": "IP",
+              "接收的流量": "接收的流量"
+            }
+          }
+        },
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Pod名称",
+                "就绪状态",
+                "状态",
+                "重启次数",
+                "IP",
+                "CPU最大资源限制",
+                "CPU已使用(m)",
+                "内存最大资源限制",
+                "内存已使用",
+                "内存使用率",
+                "接收的流量",
+                "运行于节点之上",
+                "发送的流量"
+              ]
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [
+    "Prometheus",
+    "Kubernetes"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "showme-test-k8s",
+          "value": "showme-test-k8s"
+        },
+        "datasource": null,
+        "definition": "label_values(kube_node_annotations,job)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "K8s集群",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_node_annotations,job)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": null,
+        "definition": "label_values(kube_node_annotations{job=\"$job\"},node)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "节点",
+        "multi": false,
+        "name": "node",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_node_annotations{job=\"$job\"},node)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": false,
+          "text": "showme03",
+          "value": "showme03"
+        },
+        "datasource": null,
+        "definition": "label_values(kube_namespace_labels{job=\"$job\"},namespace)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "命名空间",
+        "multi": false,
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_namespace_labels{job=\"$job\"},namespace)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": null,
+        "definition": "label_values(kube_pod_container_info{job=\"$job\",namespace=\"$namespace\"},container)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "微服务/服务名称",
+        "multi": false,
+        "name": "container",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_pod_container_info{job=\"$job\",namespace=\"$namespace\"},container)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": null,
+        "definition": "label_values(kube_pod_container_info{job=\"$job\",namespace=\"$namespace\",container=\"$container\"},pod)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Pod",
+        "multi": false,
+        "name": "pod",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_pod_container_info{job=\"$job\",namespace=\"$namespace\",container=\"$container\"},pod)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "selected": false,
+          "text": "2m",
+          "value": "2m"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "label": "time",
+        "name": "time",
+        "options": [
+          {
+            "selected": true,
+            "text": "2m",
+            "value": "2m"
+          },
+          {
+            "selected": false,
+            "text": "3m",
+            "value": "3m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "2m,3m,5m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "queryValue": "",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "K8s集群资源监控数据仪表板",
+  "uid": "ntp3uTpnz",
+  "version": 87
+}
