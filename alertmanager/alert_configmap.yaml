@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alert-config
+  namespace: monitor
+data:
+  alertmanager.yml: |
+    global:
+    route:
+      group_by: ['instance']
+      group_wait: 5s
+      group_interval: 5m
+      repeat_interval: 10m
+      receiver: 'webhook'
+      routes:
+      - match_re:
+          severity: .*
+    receivers:
+    - name: 'webhook'
+      webhook_configs:
+      - url: 'http://prometheus-alert-center.monitor.svc.cluster.local:8080/prometheusalert?type=dd&tpl=prometheus-dd&ddurl=https://oapi.dingtalk.com/robot/send?access_token=0fc5d6608920879087fe22cb9629e9bdc8a'
+        send_resolved: true

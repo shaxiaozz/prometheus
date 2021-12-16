@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager
+  namespace: monitor
+  labels:
+    name: alertmanager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: alertmanager
+  # 设置滚动更新策略
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: alertmanager
+    spec:
+      containers:
+      - name: alertmanager
+        image: prom/alertmanager:v0.23.0
+        imagePullPolicy: IfNotPresent
+
+        # 修改容器启动命令
+        command: ["/bin/alertmanager"]
+        args: ["--config.file=/etc/alertmanager/alertmanager.yml", "--storage.path=/alertmanager", "--web.external-url=https://alertmanager.qiufeng5.cn/"]
+
+        # 容器资源限制
+        resources:
+          limits:
+            memory: 200Mi
+            cpu: 50m
+          requests:
+            memory: 200Mi
+            cpu: 20m
+
+        # 容器存活健康检测
+        livenessProbe:
+          httpGet:
+            port: 9093
+            path: /metrics
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          failureThreshold: 3
+
+        # 容器就绪健康检测
+        readinessProbe:
+          httpGet:
+            port: 9093
+            path: /metrics
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+
+        # 容器路径挂载
+        volumeMounts:
+        - mountPath: /alertmanager
+          name: alertmanager-data
+        - name: config
+          mountPath: /etc/alertmanager
+          readOnly: true
+
+        #设置容器端口
+        ports:
+        - containerPort: 9093
+          protocol: TCP
+          name: http
+      # 设置configmap资源对象挂载点及pvc挂载点
+      volumes:
+      - name: alertmanager-data
+        persistentVolumeClaim:
+          claimName: alertmanager-data
+      - name: config
+        configMap:
+          name: alert-config
