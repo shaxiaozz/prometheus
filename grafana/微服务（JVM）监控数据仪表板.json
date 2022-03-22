@@ -1,40 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.2.1"
-    },
-    {
-      "type": "panel",
-      "id": "piechart",
-      "name": "Pie chart",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -59,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1639627126589,
+  "id": 26,
+  "iteration": 1647915205282,
   "links": [
     {
       "asDropdown": true,
@@ -77,6 +41,392 @@
   ],
   "liveNow": false,
   "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 56,
+      "panels": [],
+      "title": "系统概况",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dtdhms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "hideTimeOverride": true,
+      "id": 58,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 30
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "process_uptime_seconds{job=\"$job\",application=\"$service\",pod_name=\"$pod\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A",
+          "step": 40
+        }
+      ],
+      "title": "JVM已运行时长",
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "最大值为100",
+      "fill": 4,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 4,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 62,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "process_cpu_usage{job=\"$job\",application=\"$service\",pod_name=\"$pod\"} * 100",
+          "interval": "",
+          "legendFormat": "JVM CPU使用率",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "JVM CPU使用率",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:40",
+          "decimals": null,
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:41",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 4,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 14,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 64,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "system_load_average_1m{job=\"$job\",application=\"$service\",pod_name=\"$pod\"}",
+          "interval": "",
+          "legendFormat": "最近1分钟的系统平均负载",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "最近1分钟的系统平均负载",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:331",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:332",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "index": 1,
+                  "text": "1核"
+                },
+                "2": {
+                  "index": 2,
+                  "text": "2核"
+                },
+                "3": {
+                  "index": 3,
+                  "text": "3核"
+                },
+                "4": {
+                  "index": 4,
+                  "text": "4核"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 0,
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 4
+      },
+      "hideTimeOverride": true,
+      "id": 60,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 30
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.1",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "system_cpu_count{job=\"$job\",application=\"$service\",pod_name=\"$pod\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A",
+          "step": 40
+        }
+      ],
+      "title": "JVM 可用的CPU核心数",
+      "type": "stat"
+    },
     {
       "datasource": null,
       "fieldConfig": {
@@ -122,7 +472,7 @@
               }
             ]
           },
-          "unit": "ops"
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -130,7 +480,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 0
+        "y": 7
       },
       "id": 6,
       "options": {
@@ -149,7 +499,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg (irate(http_server_requests_seconds_count{job=\"$job\",application=\"$service\", uri!=\"/actuator/info\"}[$time]))",
+          "expr": "sum(irate(http_server_requests_seconds_count{job=\"$job\",application=\"$service\", uri!=\"/actuator/info\",pod_name=\"$pod\"}[$time]))",
           "interval": "",
           "legendFormat": "实例{{pod_name}} QPS",
           "refId": "A"
@@ -163,7 +513,7 @@
           "refId": "B"
         }
       ],
-      "title": "QPS",
+      "title": "总QPS",
       "type": "timeseries"
     },
     {
@@ -219,7 +569,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 0
+        "y": 7
       },
       "id": 8,
       "options": {
@@ -238,7 +588,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg (irate(http_server_requests_seconds_sum{job=\"$job\",application=\"$service\"}[$time]))",
+          "expr": "avg (irate(http_server_requests_seconds_sum{job=\"$job\",application=\"$service\",pod_name=\"$pod\"}[$time]))",
           "interval": "",
           "legendFormat": "实例{{pod_name}} 平均响应时间",
           "refId": "A"
@@ -301,7 +651,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 0
+        "y": 7
       },
       "id": 10,
       "options": {
@@ -310,7 +660,7 @@
             "last"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "right"
         },
         "tooltip": {
           "mode": "multi"
@@ -321,7 +671,7 @@
           "exemplar": true,
           "expr": "jvm_threads_live_threads{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "实例{{pod_name}} 当前线程数",
+          "legendFormat": "总线程数",
           "refId": "A"
         },
         {
@@ -329,15 +679,15 @@
           "expr": "jvm_threads_daemon_threads{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "实例{{pod_name}} 当前守护线程数",
+          "legendFormat": "守护线程数",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "jvm_threads_states_threads{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",state=\"$threads\"}",
+          "expr": "jvm_threads_states_threads{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",state=~\".*\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "实例{{pod_name}} 当前$threads线程数",
+          "legendFormat": "{{state}}",
           "refId": "C"
         }
       ],
@@ -345,256 +695,1463 @@
       "type": "timeseries"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "bytes"
+          "unit": "none"
         },
         "overrides": []
       },
+      "fill": 3,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 8,
+        "w": 12,
         "x": 0,
-        "y": 9
+        "y": 16
       },
-      "id": 2,
+      "hiddenSeries": false,
+      "id": 32,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
       "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
+        "alertThreshold": true
       },
+      "percentage": false,
+      "pluginVersion": "8.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\"}) by (pod_name)",
-          "interval": "",
-          "legendFormat": "实例{{pod_name}} 内存总量",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\"}) by (pod_name)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "实例{{pod_name}} 已使用的内存量",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\"}) by (pod_name)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "实例{{pod_name}} committed的内存量",
-          "refId": "C"
-        }
-      ],
-      "title": "（heap）内存概览",
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 2,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 8,
-        "y": 9
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\"}) by (pod_name)",
-          "interval": "",
-          "legendFormat": "实例{{pod_name}} 内存总量",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\"}) by (pod_name)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "实例{{pod_name}} 已使用的内存量",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\"}) by (pod_name)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "实例{{pod_name}} committed的内存量",
-          "refId": "C"
-        }
-      ],
-      "title": "（nonheap）内存概览",
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": []
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 16,
-        "y": 9
-      },
-      "id": 14,
-      "options": {
-        "displayLabels": [
-          "name"
-        ],
-        "legend": {
-          "displayMode": "table",
-          "placement": "right",
-          "values": [
-            "percent"
-          ]
-        },
-        "pieType": "pie",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "log4j2_events_total{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}",
+          "expr": "sum(increase(log4j2_events_total{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}[10m])) by (level)",
           "interval": "",
           "legendFormat": "{{level}}",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(increase(logback_events_total{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}[10m])) by (level)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{level}}",
+          "refId": "B"
         }
       ],
-      "title": "日志级别占比",
-      "type": "piechart"
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "各日志级别数量",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:13",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:14",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 48,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "jdbc_connections_max{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "允许的最大活跃连接数",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "hikaricp_connections_active{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "当前活跃连接数",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "hikaricp_connections_pending{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "等待获取连接数",
+          "refId": "C"
+        }
+      ],
+      "title": "数据库连接数概览",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 50,
+      "panels": [],
+      "title": "${service}服务接口概览",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "id": 52,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(irate(http_server_requests_seconds_count{job=\"$job\",application=\"$service\",uri=\"$uri\",pod_name=\"$pod\"}[$time]))",
+          "interval": "",
+          "legendFormat": "服务接口：$uri QPS",
+          "refId": "A"
+        }
+      ],
+      "title": "单个接口QPS",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 26
+      },
+      "id": 54,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "last"
+          ],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "avg (irate(http_server_requests_seconds_sum{job=\"$job\",application=\"$service\",uri=\"$uri\",pod_name=\"$pod\"}[$time]))",
+          "interval": "",
+          "legendFormat": "服务接口: $uri 平均响应时间",
+          "refId": "A"
+        }
+      ],
+      "title": "单个接口平均响应时间/s",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 40,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 27
+          },
+          "id": 42,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_gc_max_data_size_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "long-lived heap总大小",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_gc_live_data_size_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "gc后long-lived heap总大小",
+              "refId": "B"
+            }
+          ],
+          "title": "long-lived heap",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 27
+          },
+          "id": 44,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_gc_pause_seconds_count{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",action=\"end of major GC\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "major GC暂停总次数",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_gc_pause_seconds_count{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",action=\"end of minor GC\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "minor GC暂停总次数",
+              "refId": "B"
+            }
+          ],
+          "title": "GC暂停总次数",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "s"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 16,
+            "y": 27
+          },
+          "id": 46,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_gc_pause_seconds_sum{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",action=\"end of major GC\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "major GC暂停总时间",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_gc_pause_seconds_sum{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",action=\"end of minor GC\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "minor GC暂停总时间",
+              "refId": "B"
+            }
+          ],
+          "title": "GC暂停总时间",
+          "type": "timeseries"
+        }
+      ],
+      "title": "GC概述",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 34,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 28
+          },
+          "id": 36,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_buffer_total_capacity_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\", id=\"direct\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "direct总大小",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_buffer_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\", id=\"direct\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "direct已使用",
+              "refId": "B"
+            }
+          ],
+          "title": "id：direct内存概览",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 28
+          },
+          "id": 38,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_buffer_total_capacity_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\", id=\"mapped\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "mapped总大小",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_buffer_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\", id=\"mapped\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "mapped已使用",
+              "refId": "B"
+            }
+          ],
+          "title": "id：mapped内存概览",
+          "type": "timeseries"
+        }
+      ],
+      "title": "NIO Buffer内存概览",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 20,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 29
+          },
+          "id": 16,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\".*Eden Space\"}) by (pod_name,id)",
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 内存上限",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\".*Eden Space\"}) by (pod_name,id)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 已使用的内存",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\".*Eden Space\"}) by (pod_name,id)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 已分配的内存",
+              "refId": "C"
+            }
+          ],
+          "title": "Eden Space",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 29
+          },
+          "id": 2,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\".*Survivor Space\"}) by (pod_name,id)",
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 内存上限",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\".*Survivor Space\"}) by (pod_name,id)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 已使用的内存",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\".*Survivor Space\"}) by (pod_name,id)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 已分配的内存",
+              "refId": "C"
+            }
+          ],
+          "title": "Survivor Space",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 16,
+            "y": 29
+          },
+          "id": 22,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\"Tenured Gen|G1 Old Gen|PS Old Gen\"}) by (pod_name,id)",
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 内存上限",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\"Tenured Gen|G1 Old Gen|PS Old Gen\"}) by (pod_name,id)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 已使用的内存",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"heap\",id=~\"Tenured Gen|G1 Old Gen|PS Old Gen\"}) by (pod_name,id)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "\"{{id}}\" 已分配的内存",
+              "refId": "C"
+            }
+          ],
+          "title": "Old Gen",
+          "type": "timeseries"
+        }
+      ],
+      "title": "heap内存概览",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 18,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 30
+          },
+          "id": 24,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=\"Compressed Class Space\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "id：\"Compressed Class Space\" 内存上限",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=\"Compressed Class Space\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "id：\"Compressed Class Space\" 已使用的内存",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=\"Compressed Class Space\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "id：\"Compressed Class Space\" 已分配的内存",
+              "refId": "C"
+            }
+          ],
+          "title": "id：Compressed Class Space内存概览",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 30
+          },
+          "id": 26,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=\"Metaspace\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "id：\"Metaspace\" 内存上限",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=\"Metaspace\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "id：\"Metaspace\" 已使用的内存",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=\"Metaspace\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "id：\"Metaspace\" 已分配的内存",
+              "refId": "C"
+            }
+          ],
+          "title": "id：Metaspace内存概览",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  }
+                ]
+              },
+              "unit": "bytes"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 16,
+            "y": 30
+          },
+          "id": 28,
+          "options": {
+            "legend": {
+              "calcs": [
+                "last"
+              ],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_max_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=~\"CodeHeap.*|Code Cache\"}) by (pod_name)",
+              "interval": "",
+              "legendFormat": "id：\"CodeHeap\" 内存上限",
+              "refId": "A"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_used_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=~\"CodeHeap.*|Code Cache\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "id：\"CodeHeap\" 已使用的内存",
+              "refId": "B"
+            },
+            {
+              "exemplar": true,
+              "expr": "sum(jvm_memory_committed_bytes{job=\"$job\",application=\"$service\",pod_name=~\"$pod\",area=\"nonheap\",id=~\"CodeHeap.*|Code Cache\"}) by (pod_name)",
+              "hide": false,
+              "interval": "",
+              "legendFormat": "id：\"CodeHeap\" 已分配的内存",
+              "refId": "C"
+            }
+          ],
+          "title": "id：CodeHeap内存概览",
+          "type": "timeseries"
+        }
+      ],
+      "title": "nonheap内存概览",
+      "type": "row"
     }
   ],
   "schemaVersion": 31,
@@ -608,8 +2165,12 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": false,
+          "text": "platform-prd-services",
+          "value": "platform-prd-services"
+        },
+        "datasource": null,
         "definition": "label_values( jvm_memory_max_bytes,job)",
         "description": "",
         "error": null,
@@ -624,15 +2185,19 @@
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "",
+        "regex": "/^showme|platform.*/",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query"
       },
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": false,
+          "text": "live-platform",
+          "value": "live-platform"
+        },
+        "datasource": null,
         "definition": "label_values( jvm_memory_max_bytes{job=\"$job\"},application)",
         "description": null,
         "error": null,
@@ -654,8 +2219,12 @@
       },
       {
         "allValue": ".*",
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": false,
+          "text": "live-platform-568ddb4468-ngcsn",
+          "value": "live-platform-568ddb4468-ngcsn"
+        },
+        "datasource": null,
         "definition": "label_values( jvm_memory_max_bytes{job=\"$job\",application=\"$service\"},pod_name)",
         "description": null,
         "error": null,
@@ -677,8 +2246,12 @@
       },
       {
         "allValue": "",
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": null,
         "definition": "query_result( topk(5,sum  (avg_over_time(http_server_requests_seconds_max{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"}[$time] )) by (uri)  ) ) ",
         "description": null,
         "error": null,
@@ -699,20 +2272,24 @@
         "type": "query"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
-        "definition": "label_values( jvm_threads_states_threads{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"},state)",
+        "allValue": ".*",
+        "current": {
+          "selected": false,
+          "text": "/thirdPartyCallback/tencent/streamEvent",
+          "value": "/thirdPartyCallback/tencent/streamEvent"
+        },
+        "datasource": null,
+        "definition": "label_values( http_server_requests_seconds_count{job=\"$job\",application=\"$service\"},uri)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "线程状态",
+        "label": "服务接口",
         "multi": false,
-        "name": "threads",
+        "name": "uri",
         "options": [],
         "query": {
-          "query": "label_values( jvm_threads_states_threads{job=\"$job\",application=\"$service\",pod_name=~\"$pod\"},state)",
+          "query": "label_values( http_server_requests_seconds_count{job=\"$job\",application=\"$service\"},uri)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -818,5 +2395,5 @@
   "timezone": "",
   "title": "微服务（JVM）监控数据仪表板",
   "uid": "VaMju327k",
-  "version": 71
+  "version": 182
 }
